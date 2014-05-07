@@ -1,0 +1,124 @@
+// The base font size
+$base-font-size: 15px
+
+// Base line height
+$base-line-height: 20px
+
+// Rhythm unit (Compass vertical rhythm)
+$rhythm-unit: rem
+
+$base-font-family: 'Pontano Sans','Helvetica Neue', Helvetica, Arial, sans-serif
+$base-font-weight: normal
+
+// Font size increments based of modular scale perfect fourths
+// Modular Scale ----------------------
+// 16px @ 1:1.333
+// 24px @ 1:1.333
+
+$tiny-font-size: 12px
+$small-font-size: 14px
+$normal-font-size: $base-font-size
+$medium-font-size: 18px
+$large-font-size: 21px
+$xlarge-font-size: 24px
+$xxlarge-font-size: 28px
+$xxxlarge-font-size: 32px
+$super-font-size: 68px
+
+$round-to-nearest-half-line: true
+
+
+@mixin typeSize($size)
+	@if $size == "tiny"
+		@include adjust-font-size-to($tiny-font-size)
+
+	@if $size == "small"
+		@include adjust-font-size-to($small-font-size)
+
+	@if $size == "base"
+		@include adjust-font-size-to($normal-font-size)
+
+	@if $size == "medium"
+		@include adjust-font-size-to($medium-font-size)
+
+	@if $size == "large"
+		@include adjust-font-size-to($large-font-size)
+
+	@if $size == "xlarge"
+		@include adjust-font-size-to($xlarge-font-size)
+
+	@if $size == "xxlarge"
+		@include adjust-font-size-to($xxlarge-font-size)
+
+	@if $size == "xxxlarge"
+		@include adjust-font-size-to($xxxlarge-font-size)
+
+	@if $size == "super"
+		@include adjust-font-size-to($super-font-size)
+
+
+// type weights
+
+%text-strong
+	font-weight: 700
+
+%text-normal
+	font-weight: normal
+
+// Type size variants
+
+%text-tiny
+	+typeSize(tiny)
+
+%text-small
+	+typeSize(small)
+
+%text-base
+	+typeSize(base)
+
+%text-medium
+	+typeSize(medium)
+
+%text-large
+	+typeSize(large)
+
+%text-xlarge
+	+typeSize(xlarge)
+
+%text-xxlarge
+	+typeSize(xxlarge)
+
+%text-xxxlarge
+	+typeSize(xxxlarge)
+
+%text-super
+	+typeSize(super)
+
+
+// Type
+
+#{headings(4)}
+	margin: 0
+
+h1
+	@extend %text-xxxlarge
+
+h2
+	@extend %text-medium
+
+h3
+	@extend %text-base
+
+h4
+	@extend %text-small
+
+
+
+p
+	+trailer(.5)
+
+strong
+	@extend %text-strong
+
+
+

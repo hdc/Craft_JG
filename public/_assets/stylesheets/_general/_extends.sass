@@ -1,0 +1,101 @@
+
+// Position
+// =====================
+%position-absolute
+	position: absolute
+
+%position-relative
+	position: relative
+
+%position-fixed
+	position: fixed
+
+// display
+// =====================
+%display-block
+	display: block
+
+%display-inline
+	display: inline
+
+%display-inline-block
+	+inline-block
+
+%overflow-hidden
+	overflow: hidden
+
+// Float
+// =====================
+%float-left
+	+float(left)
+
+%float-right
+	+float(right)
+
+%reset-float
+	+reset-float
+
+// Margins and padding
+// =====================
+%no-margin
+	margin: 0
+
+%no-padding
+	padding: 0
+
+%no-margin-or-padding
+	@extend %no-margin
+	@extend %no-padding
+
+%center
+	margin: 0 auto
+
+// Clear
+// =====================
+%clearfix
+	&:before
+		content: ""
+		display: table
+	&:after
+		content: ""
+		display: table
+		clear: both
+	*zoom: 1
+
+%clear
+	clear: both
+
+// text
+// =====================
+%text-center
+	text-align: center
+
+%text-left
+	text-align: left
+
+%text-right
+	text-align: right
+
+%text-caps
+	text-transform: uppercase
+
+// Transitions
+// =====================
+%transition-all
+	+transition(all .3s ease-in-out)
+
+%transition-color
+	+transition(color .2s ease-in-out)
+
+%transition-background
+	+transition(background .3s ease-in-out)
+
+%transition-border
+	+transition(border .3s ease-in-out)
+
+
+%img-full
+	img
+		max-width: 100%
+		width: 100%
+		height: auto

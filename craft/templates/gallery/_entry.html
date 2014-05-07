@@ -1,0 +1,76 @@
+{% extends "_layout" %}
+
+{% block content %}
+<div class="inset">
+<article class="section">
+    <div class="grid_item">
+        <div class="content_block">
+            <h2>{{ entry.title | capitalize }}</h2>
+            <ul class="work_meta">
+                {% set seriesName = entry.parent(title) %}
+                {% if seriesName is defined %}<li class="work_meta-item">{{ seriesName }}</li>{% endif %}
+                <li class="work_meta-item">{{ entry.materials }}</li>
+                <li class="work_meta-item">{{ entry.dimensions }}</li>
+            </ul>
+            <div class="work_description">
+                {{ entry.description }}
+            </div>
+        </div>
+    </div>
+
+    <div class="media_container">
+        <div class="grid_item--media">
+            <div class="img-block">
+                {% for block in entry.galleryImagesLeft %}
+                    {% if block.type == "galleryImageLeft" %}
+                        {% set image = block.image.first() %}
+                            {% if image %}
+                            <div class="img-block_item">
+                                <img src="{{ image.url }}" alt="{{ image.title }}">
+                                {% if block.caption %}
+                                <p>{{ block.caption }}</p>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="grid_item--media">
+            <div class="img-block">
+                {% for block in entry.galleryImagesRight %}
+                {% if block.type == "galleryImageRight" %}
+                {% set image = block.image.first() %}
+                {% if image %}
+                <div class="img-block_item">
+                    <img src="{{ image.url }}" alt="{{ image.title }}">
+                    {% if block.caption %}
+                    <p>{{ block.caption }}</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    {% set params = { section: 'Gallery', type: 'gallery' } %}
+    {% set prevArt = entry.getPrev(params) %}
+    {% set nextArt = entry.getNext(params) %}
+
+    <div class="page_nav">
+        {% if prevArt %}
+        <a class="page_nav-item--left" href="{{ prevArt.url }}"></a>
+        {% endif %}
+
+        {% if nextArt %}
+        <a class="page_nav-item--right" href="{{ nextArt.url }}"></a>
+        {% endif %}
+    </div>
+
+</article>
+{% endblock %}
