@@ -23,7 +23,7 @@
 .settings
 *.vagrant
 config.rb
-*.settings.txt
+settings.txt
 *puppet
 *.sass-cache
 *.esproj
