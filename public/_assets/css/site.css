@@ -261,8 +261,8 @@ header,
 .content,
 footer {
   *zoom: 1;
-  max-width: 65.33333em;
-  _width: 65.33333em;
+  max-width: 76.33333em;
+  _width: 76.33333em;
   padding-left: 1.33333em;
   padding-right: 1.33333em;
   margin-left: auto;
@@ -293,15 +293,15 @@ footer:after {
 
 /* line 77, ../stylesheets/site.sass */
 .inset {
-  padding-left: 9.18367%;
-  padding-right: 9.18367%;
+  padding-left: 9.17031%;
+  padding-right: 9.17031%;
 }
 
 /* line 80, ../stylesheets/site.sass */
 .grid_item {
-  width: 32.5%;
+  width: 32.62032%;
   float: left;
-  margin-right: 1.25%;
+  margin-right: 1.06952%;
   display: inline;
 }
 /* line 184, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */
@@ -353,7 +353,7 @@ footer:after {
 
 /* line 138, ../stylesheets/site.sass */
 .media_container {
-  width: 66.25%;
+  width: 66.31016%;
   float: right;
   margin-right: 0;
   *margin-left: -0.66667em;
@@ -362,9 +362,9 @@ footer:after {
 
 /* line 141, ../stylesheets/site.sass */
 .grid_item--media {
-  width: 49.0566%;
+  width: 49.19355%;
   float: left;
-  margin-right: 1.88679%;
+  margin-right: 1.6129%;
   display: inline;
 }
 /* line 184, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/susy-1.0.9/sass/susy/_grid.scss */

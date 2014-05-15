@@ -24,7 +24,7 @@
 *.vagrant
 config.rb
 settings.txt
-*puppet
+/puppet/*
 *.sass-cache
 *.esproj
 *.atlassian-ide-plugin.xml

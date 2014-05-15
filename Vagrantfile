@@ -52,8 +52,6 @@ Vagrant.configure('2') do |config|
     :group => 'www-data',
     :mount_options => ['dmode=777,fmode=777']
 
-   config.vm.synced_folder "public", "/vagrant/public"
-
    config.vm.synced_folder "public/uploads", "/vagrant/public/uploads",
        :owner => 'www-data',
        :group => 'www-data',
