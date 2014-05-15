@@ -109,6 +109,29 @@ footer
 				@extend %display-block
 
 
+// HomePage
+.project-slider
+	@extend %overflow-hidden
+
+.item-img-block
+	@extend %img-full
+
+.item-details
+	@extend %text-small
+	+leader(.25)
+
+	.item-title
+		@extend %text-strong
+		color: #000
+		margin: 0
+	.item-description
+		@extend %transition-color
+		color: $primary-text
+		margin: 0
+
+		#{$focus}
+			color: $link-color
+
 
 // Gallery
 
@@ -135,24 +158,23 @@ footer
 
 %page_nav-item
 	@extend %display-block
+	@extend %position-absolute
 	background: transparent url(../img/page_arrows.png) no-repeat
 	width: em(32px)
 	height: em(30px)
+	top: 50%
 
 .page_nav
-	@extend %position-absolute
-	top: 50%
 	width: 100%
 
 	.page_nav-item--right
 		@extend %page_nav-item
-		@extend %float-right
+		right: 0
 		background-position: center -30px
 
 
 	.page_nav-item--left
 		@extend %page_nav-item
-		@extend %float-left
 		background-position: center 0
 		left: 0
 

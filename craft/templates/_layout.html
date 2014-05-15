@@ -38,24 +38,22 @@
             <header id="header">
                 <div class="inset">
                     <nav class="nav">
+
+
+                        {% set galleryElement = craft.entries.section('gallery').type('project').level(2).first() %}
+                        {% set roadElement = craft.entries.section('onTheRoad').type('project').level(2).first() %}
+
                         <ul class="nav_container">
                             <li class="nav_item"><a class="nav_item-block {% if craft.request.firstSegment == '' %}active{% endif %}" href="{{ siteUrl }}">Home</a></li>
-                            <li class="nav_item"><a class="nav_item-block {% if craft.request.firstSegment == 'gallery' %}active{% endif %}" href="{{ url('gallery') }}">Gallery</a></li>
-                            <li class="nav_item"><a class="nav_item-block {% if craft.request.firstSegment == 'on-the-road' %}active{% endif %}" href="{{ url('on-the-road') }}">On The Road</a></li>
+                            <li class="nav_item"><a class="nav_item-block {% if craft.request.firstSegment == 'gallery' %}active{% endif %}" href="{{ galleryElement.getUrl }}﻿">Gallery</a></li>
+                            <li class="nav_item"><a class="nav_item-block {% if craft.request.firstSegment == 'on-the-road' %}active{% endif %}" href="{{ roadElement.getUrl }}">On The Road</a></li>
                             <li class="nav_item"><a class="nav_item-block {% if craft.request.firstSegment == 'the-artist' %}active{% endif %}" href="{{ url('the-artist') }}" >The Artist</a></li>
                         </ul>
                     </nav>
                 </div>
                 <h1 class="site-name"><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
 
-                {% set pages = craft.section().find() %}
-                <nav>
-                    <ul>
-                        {% for page in pages %}
-                        <li>{{ page.getLink() }}</li>
-                        {% endfor %}
-                    </ul>
-                </nav>
+
             </header>
 
             <main class="content" role="main">

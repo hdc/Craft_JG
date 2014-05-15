@@ -1,7 +1,13 @@
+{% for block in entry.media %}
 <div class="media-block">
-    {% for media in entry.media %}
-        {% if media.type == 'image' %}
-
+    <div class="media-block">
+        {% if column %}
+        {% set image = cImage %}
+        <div class="img-block">
+            <img src="{{ image.url }}" alt="{{ image.title }}">
+        </div>
         {% endif %}
-    {% endfor %}
+    </div>
 </div>
+{% endfor %}
+

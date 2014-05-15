@@ -1,0 +1,15 @@
+// Local
+// -- craft.dev
+Database: jgregory
+Server: localhoost
+User: root
+pass: root
+
+// dev environment
+// -- dev.judygregory.com
+
+Document Root: /home/lilzylgu/public_html/dev
+Database: lilzylgu_judyDev
+Server: localhost
+User: lilzylgu_judy
+pass: iC0hoKYptsPC

@@ -33,7 +33,7 @@ $round-to-nearest-half-line: true
 		@include adjust-font-size-to($tiny-font-size)
 
 	@if $size == "small"
-		@include adjust-font-size-to($small-font-size)
+		@include adjust-font-size-to($small-font-size, .9)
 
 	@if $size == "base"
 		@include adjust-font-size-to($normal-font-size)
