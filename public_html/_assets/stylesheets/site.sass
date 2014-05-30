@@ -1,0 +1,194 @@
+@import compass
+@import compass/reset
+
+@import susy
+
+// Base Imports
+
+@import _base/colors
+@import _base/type
+
+// General Imports
+
+@import _general/extends
+@import _general/functions
+
+@import _modules/owl
+
+
+// Root styles
+
++establish-baseline
+
+html
+	background: $body-background
+	color: $primary-text
+	font-family: $base-font-family
+
+// Layout
+// Setting up the Magic Grid
+
+$total-columns: 11
+$column-width: em(95px)
+$gutter-width: em(10px)
+$grid-padding: em(20px)
+
+.page-wrap
+	@extend %position-relative
+	background: $primary-text url(../img/art_bgd.jpg) repeat-x 0 50%
+	height: em(31px)
+
+	.art
+		@extend %position-absolute
+		background: transparent url(../img/art_bubble.jpg) no-repeat left 0
+		top: 0
+		left: 50%
+		margin-left: em(-512px)
+		width: em(1024px)
+		height: em(78px)
+
+.container
+	@extend %position-relative
+	z-index: 99
+
+.content
+	min-height: em(466px)
+
+
+%site-width
+	+container
+	//+susy-grid-background
+
+.site-name
+	@extend %display-block
+	@extend %text-center
+	@extend %img-full
+	margin: rhythm(2.5) auto
+	width: em(238px)
+	height: em(27px)
+
+	&.home
+		width: em(473px)
+		height: em(54px)
+
+header,
+.content,
+footer
+	@extend %position-relative
+	@extend %site-width
+
+
+.inset
+	+pad(1,1)
+
+.grid_item
+	+span-columns(3,9)
+	+nth-omega(3)
+
+.img-block
+	@extend %img-full
+
+// Main Navigation
+.nav
+	@extend %position-relative
+	margin-top: em(30px)
+
+	.nav_container
+		@extend %clearfix
+
+		.nav_item
+			@extend %float-left
+			border-left: 2px solid $primary-text
+			line-height: 1
+			padding: 0 rhythm(.5)
+			&:first-child
+				border: none
+				padding-left: 0
+			&.last
+				@extend %float-right
+				border: none
+				padding: 0
+
+			.nav_item-block
+				@extend %display-block
+
+
+// HomePage
+.project-slider
+	@extend %overflow-hidden
+
+.item-img-block
+	@extend %img-full
+
+.item-details
+	@extend %text-small
+	+leader(.25)
+
+	.item-title
+		@extend %text-strong
+		color: #000
+		margin: 0
+	.item-description
+		@extend %transition-color
+		color: $primary-text
+		margin: 0
+
+		#{$focus}
+			color: $link-color
+
+
+// Gallery
+
+.media_container
+	+span-columns(6 omega,9)
+
+.grid_item--media
+	@extend %overflow-hidden
+	max-height: em(422px)
+	+span-columns(3,6)
+	+nth-omega(2)
+
+.content_block
+	padding-right: em(20px)
+
+.work_meta
+	+trailer(.5)
+	+leader(.25)
+
+.work_meta-item
+	border-top: 1px solid $primary-text
+	padding: rhythm(.35) 0
+
+.img-block
+	margin-bottom: $gutter-width
+	img
+		@extend %display-block
+
+
+// Page Nav
+
+%page_nav-item
+	@extend %display-block
+	@extend %position-absolute
+	background: transparent url(../img/page_arrows.png) no-repeat
+	width: em(32px)
+	height: em(30px)
+	top: 50%
+	cursor: pointer
+
+.page_nav
+	width: 100%
+
+	.page_nav-item--right
+		@extend %page_nav-item
+		right: 0
+		background-position: center -30px
+
+
+	.page_nav-item--left
+		@extend %page_nav-item
+		background-position: center 0
+		left: 0
+
+
+

@@ -3,10 +3,10 @@ require "susy"
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "public/_assets/css"
-sass_dir = "public/_assets/stylesheets"
-images_dir = "public/_assets/img"
-javascripts_dir = "public/_assets/js"
+css_dir = "public_html/_assets/css"
+sass_dir = "public_html/_assets/stylesheets"
+images_dir = "public_html/_assets/img"
+javascripts_dir = "public_html/_assets/js"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed

@@ -1,13 +1,13 @@
 {% for block in entry.media %}
 <div class="media-block">
-    <div class="media-block">
-        {% if column %}
-        {% set image = cImage %}
-        <div class="img-block">
-            <img src="{{ image.url }}" alt="{{ image.title }}">
-        </div>
-        {% endif %}
+    {% if block.type == 'columnType' %}
+    {% set image = block.cImage.first() %}
+    {% if image is not null %}
+    <div class="img-block">
+        <img src="{{ image.url }}" alt="{{ image.title }}">
     </div>
+    {% endif %}
+    {% endif %}
 </div>
 {% endfor %}
 

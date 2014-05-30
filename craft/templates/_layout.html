@@ -2,31 +2,26 @@
  ========================== #}
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" > <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" xmlns="http://www.w3.org/1999/xhtml" lang="en-US" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"> <!--<![endif]-->
+
 <head>
+    {{ getHeadHtml() }}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+	<title>{% if title is defined %}{{ title }} | {% endif %}{{ siteName }}</title>
 	<link rel="home" href="{{ siteUrl }}" />
     <link rel="stylesheet" type="text/css" href="/_assets/css/site.css" />
     <link rel="canonical" href="{{ entry.url }}">
     <link rel="shortcut icon" href="" type="image/x-icon">
     <link rel="icon" href="" type="image/x-icon">
-
-    <script type="text/javascript">
-        WebFontConfig = {
-            google: { families: [ 'Pontano+Sans::latin' ] }
-        };
-        (function() {
-            var wf = document.createElement('script');
-            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })(); </script>
 
 </head>
 
@@ -51,7 +46,15 @@
                         </ul>
                     </nav>
                 </div>
-                <h1 class="site-name"><a href="{{ siteUrl }}">{{ siteName }}</a></h1>
+                {% if craft.request.firstSegment == '' %}
+                <span class="site-name home">
+                    <img src="/_assets/img/judy_large.png" alt="judith Olsen Gregory">
+                </span>
+                {% else %}
+                <a class="site-name" href="{{ siteUrl }}">
+                    <img src="/_assets/img/judy_small.png" alt="judith Olsen Gregory">
+                </a>
+                {% endif %}
 
 
             </header>
@@ -62,5 +65,9 @@
                 {% endblock %}
             </main>
         </div>
+
+        {% block js %}
+            <script type="text/javascript" src="/_assets/js/modernizr.custom.js"></script>
+        {% endblock js %}
 </body>
 </html>
