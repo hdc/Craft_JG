@@ -13,7 +13,7 @@
 @import _general/extends
 @import _general/functions
 
-@import _modules/owl
+//@import _modules/owl
 
 
 // Root styles
@@ -117,24 +117,29 @@ footer
 .project-slider
 	@extend %overflow-hidden
 
+.item
+	@extend %display-block
+	#{$focus}
+		color: $link-color
+
 .item-img-block
 	@extend %img-full
+	@extend %overflow-hidden
+	max-height: em(452px)
 
 .item-details
 	@extend %text-small
+	color: $primary-text
 	+leader(.25)
 
 	.item-title
 		@extend %text-strong
 		color: #000
 		margin: 0
+
 	.item-description
 		@extend %transition-color
-		color: $primary-text
 		margin: 0
-
-		#{$focus}
-			color: $link-color
 
 
 // Gallery
@@ -144,7 +149,7 @@ footer
 
 .grid_item--media
 	@extend %overflow-hidden
-	max-height: em(422px)
+	max-height: em(420px)
 	+span-columns(3,6)
 	+nth-omega(2)
 

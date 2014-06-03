@@ -9,12 +9,12 @@
 
                 <ul class="work_meta">
                     {% set seriesName = entry.parent('title') %}
-                    {% if seriesName is not null %}<li class="work_meta-item">{{ seriesName }}</li>{% endif %}
-                    {% if entry.materials | length %} <li class="work_meta-item">{{ entry.materials }}</li>{% endif %}
-                    {% if entry.dimensions | length %}<li class="work_meta-item">{{ entry.dimensions }}</li>{% endif %}
+                    {% if seriesName is not null %}<li class="work_meta-item">{{ seriesName | widont }}</li>{% endif %}
+                    {% if entry.materials | length %} <li class="work_meta-item">{{ entry.materials | widont }}</li>{% endif %}
+                    {% if entry.dimensions | length %}<li class="work_meta-item">{{ entry.dimensions | widont }}</li>{% endif %}
                 </ul>
                 <div class="work_description">
-                    {{ entry.description }}
+                    {{ entry.description | widont}}
                 </div>
             </div>
         </div>

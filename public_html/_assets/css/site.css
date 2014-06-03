@@ -153,12 +153,12 @@ footer, .nav {
 }
 
 /* line 15, ../stylesheets/_general/_extends.sass */
-.site-name, .nav .nav_container .nav_item .nav_item-block, .img-block img, .page_nav .page_nav-item--right, .page_nav .page_nav-item--left {
+.site-name, .nav .nav_container .nav_item .nav_item-block, .item, .img-block img, .page_nav .page_nav-item--right, .page_nav .page_nav-item--left {
   display: block;
 }
 
 /* line 24, ../stylesheets/_general/_extends.sass */
-.project-slider, .grid_item--media {
+.project-slider, .item-img-block, .grid_item--media {
   overflow: hidden;
 }
 
@@ -208,275 +208,6 @@ a:link, a:visited, .item-details .item-description {
   max-width: 100%;
   width: 100%;
   height: auto;
-}
-
-/*  Owl Carousel - Animate Plugin
- */
-/* line 4, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .animated {
-  -webkit-animation-duration: 1000ms;
-  animation-duration: 1000ms;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-/* line 10, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-animated-in {
-  z-index: 0;
-}
-
-/* line 13, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-animated-out {
-  z-index: 1;
-}
-
-/* line 16, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .fadeOut {
-  -webkit-animation-name: fadeOut;
-  animation-name: fadeOut;
-}
-
-@-webkit-keyframes fadeOut {
-  /* line 22, ../stylesheets/_modules/_owl.sass */
-  0% {
-    opacity: 1;
-  }
-
-  /* line 26, ../stylesheets/_modules/_owl.sass */
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes fadeOut {
-  /* line 31, ../stylesheets/_modules/_owl.sass */
-  0% {
-    opacity: 1;
-  }
-
-  /* line 35, ../stylesheets/_modules/_owl.sass */
-  100% {
-    opacity: 0;
-  }
-}
-
-/* 	Owl Carousel - Auto Height Plugin
- */
-/* line 43, ../stylesheets/_modules/_owl.sass */
-.owl-height {
-  -webkit-transition: height 500ms ease-in-out;
-  -moz-transition: height 500ms ease-in-out;
-  -ms-transition: height 500ms ease-in-out;
-  -o-transition: height 500ms ease-in-out;
-  transition: height 500ms ease-in-out;
-}
-
-/*  Core Owl Carousel CSS File
- */
-/* line 54, ../stylesheets/_modules/_owl.sass */
-.owl-carousel {
-  display: none;
-  width: 100%;
-  -webkit-tap-highlight-color: transparent;
-  /* position relative and z-index fix webkit rendering fonts issue */
-  position: relative;
-  z-index: 1;
-}
-
-/* line 62, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-stage {
-  position: relative;
-  -ms-touch-action: pan-Y;
-}
-
-/* line 66, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-stage:after {
-  content: ".";
-  display: block;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  height: 0;
-}
-
-/* line 74, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-stage-outer {
-  position: relative;
-  overflow: hidden;
-  /* fix for flashing background */
-  -webkit-transform: translate3d(0px, 0px, 0px);
-}
-
-/* line 80, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-controls .owl-nav .owl-prev,
-.owl-carousel .owl-controls .owl-nav .owl-next,
-.owl-carousel .owl-controls .owl-dot {
-  cursor: pointer;
-  cursor: hand;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* line 91, ../stylesheets/_modules/_owl.sass */
-.owl-carousel.owl-loaded {
-  display: block;
-}
-
-/* line 94, ../stylesheets/_modules/_owl.sass */
-.owl-carousel.owl-loading {
-  opacity: 0;
-  display: block;
-}
-
-/* line 98, ../stylesheets/_modules/_owl.sass */
-.owl-carousel.owl-hidden {
-  opacity: 0;
-}
-
-/* line 101, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-refresh .owl-item {
-  display: none;
-}
-
-/* line 104, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-item {
-  position: relative;
-  min-height: 1px;
-  float: left;
-  -webkit-backface-visibility: hidden;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* line 116, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-item img {
-  display: block;
-  width: 100%;
-  -webkit-transform-style: preserve-3d;
-}
-
-/* line 121, ../stylesheets/_modules/_owl.sass */
-.owl-carousel.owl-text-select-on .owl-item {
-  -webkit-user-select: auto;
-  -moz-user-select: auto;
-  -ms-user-select: auto;
-  user-select: auto;
-}
-
-/* line 127, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-grab {
-  cursor: move;
-  cursor: -webkit-grab;
-  cursor: -o-grab;
-  cursor: -ms-grab;
-  cursor: grab;
-}
-
-/* line 134, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-rtl {
-  direction: rtl;
-}
-
-/* line 137, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-rtl .owl-item {
-  float: right;
-}
-
-/* No Js */
-/* line 142, ../stylesheets/_modules/_owl.sass */
-.no-js .owl-carousel {
-  display: block;
-}
-
-/* 	Owl Carousel - Lazy Load Plugin
- */
-/* line 149, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-item .owl-lazy {
-  opacity: 0;
-  -webkit-transition: opacity 400ms ease;
-  -moz-transition: opacity 400ms ease;
-  -ms-transition: opacity 400ms ease;
-  -o-transition: opacity 400ms ease;
-  transition: opacity 400ms ease;
-}
-
-/* line 157, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-item img {
-  transform-style: preserve-3d;
-}
-
-/* 	Owl Carousel - Video Plugin
- */
-/* line 164, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-video-wrapper {
-  position: relative;
-  height: 100%;
-  background: black;
-}
-
-/* line 169, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-video-play-icon {
-  position: absolute;
-  height: 80px;
-  width: 80px;
-  left: 50%;
-  top: 50%;
-  margin-left: -40px;
-  margin-top: -40px;
-  background: url("owl.video.play.png") no-repeat;
-  cursor: pointer;
-  z-index: 1;
-  -webkit-backface-visibility: hidden;
-  -webkit-transition: scale 100ms ease;
-  -moz-transition: scale 100ms ease;
-  -ms-transition: scale 100ms ease;
-  -o-transition: scale 100ms ease;
-  transition: scale 100ms ease;
-}
-
-/* line 187, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-video-play-icon:hover {
-  -webkit-transition: scale(1.3, 1.3);
-  -moz-transition: scale(1.3, 1.3);
-  -ms-transition: scale(1.3, 1.3);
-  -o-transition: scale(1.3, 1.3);
-  transition: scale(1.3, 1.3);
-}
-
-/* line 194, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-video-playing .owl-video-tn,
-.owl-carousel .owl-video-playing .owl-video-play-icon {
-  display: none;
-}
-
-/* line 198, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-video-tn {
-  opacity: 0;
-  height: 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  -o-background-size: contain;
-  background-size: contain;
-  -webkit-transition: opacity 400ms ease;
-  -moz-transition: opacity 400ms ease;
-  -ms-transition: opacity 400ms ease;
-  -o-transition: opacity 400ms ease;
-  transition: opacity 400ms ease;
-}
-
-/* line 213, ../stylesheets/_modules/_owl.sass */
-.owl-carousel .owl-video-frame {
-  position: relative;
-  z-index: 1;
 }
 
 /* line 105, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/compass-0.13.alpha.4/frameworks/compass/stylesheets/compass/typography/_vertical_rhythm.scss */
@@ -590,27 +321,33 @@ footer:after {
   padding: 0;
 }
 
-/* line 123, ../stylesheets/site.sass */
+/* line 122, ../stylesheets/site.sass */
+.item:hover, .item:focus, .item:active {
+  color: #f1a900;
+}
+
+/* line 125, ../stylesheets/site.sass */
+.item-img-block {
+  max-height: 30.13333em;
+}
+
+/* line 130, ../stylesheets/site.sass */
 .item-details {
+  color: #949274;
   margin-top: 5px;
   margin-top: 0.33333rem;
 }
-/* line 127, ../stylesheets/site.sass */
+/* line 135, ../stylesheets/site.sass */
 .item-details .item-title {
   color: black;
   margin: 0;
 }
-/* line 131, ../stylesheets/site.sass */
+/* line 140, ../stylesheets/site.sass */
 .item-details .item-description {
-  color: #949274;
   margin: 0;
 }
-/* line 136, ../stylesheets/site.sass */
-.item-details .item-description:hover, .item-details .item-description:focus, .item-details .item-description:active {
-  color: #f1a900;
-}
 
-/* line 142, ../stylesheets/site.sass */
+/* line 147, ../stylesheets/site.sass */
 .media_container {
   width: 66.31016%;
   float: right;
@@ -619,9 +356,9 @@ footer:after {
   display: inline;
 }
 
-/* line 145, ../stylesheets/site.sass */
+/* line 150, ../stylesheets/site.sass */
 .grid_item--media {
-  max-height: 28.13333em;
+  max-height: 28em;
   width: 49.19355%;
   float: left;
   margin-right: 1.6129%;
@@ -633,12 +370,12 @@ footer:after {
   margin-right: 0;
 }
 
-/* line 151, ../stylesheets/site.sass */
+/* line 156, ../stylesheets/site.sass */
 .content_block {
   padding-right: 1.33333em;
 }
 
-/* line 154, ../stylesheets/site.sass */
+/* line 159, ../stylesheets/site.sass */
 .work_meta {
   margin-bottom: 10px;
   margin-bottom: 0.66667rem;
@@ -646,18 +383,18 @@ footer:after {
   margin-top: 0.33333rem;
 }
 
-/* line 158, ../stylesheets/site.sass */
+/* line 163, ../stylesheets/site.sass */
 .work_meta-item {
   border-top: 1px solid #949274;
   padding: 0.46667rem 0;
 }
 
-/* line 162, ../stylesheets/site.sass */
+/* line 167, ../stylesheets/site.sass */
 .img-block {
   margin-bottom: 0.66667em;
 }
 
-/* line 170, ../stylesheets/site.sass */
+/* line 175, ../stylesheets/site.sass */
 .page_nav .page_nav-item--right, .page_nav .page_nav-item--left {
   background: transparent url(../img/page_arrows.png) no-repeat;
   width: 2.13333em;
@@ -666,16 +403,16 @@ footer:after {
   cursor: pointer;
 }
 
-/* line 179, ../stylesheets/site.sass */
+/* line 184, ../stylesheets/site.sass */
 .page_nav {
   width: 100%;
 }
-/* line 182, ../stylesheets/site.sass */
+/* line 187, ../stylesheets/site.sass */
 .page_nav .page_nav-item--right {
   right: 0;
   background-position: center -30px;
 }
-/* line 188, ../stylesheets/site.sass */
+/* line 193, ../stylesheets/site.sass */
 .page_nav .page_nav-item--left {
   background-position: center 0;
   left: 0;

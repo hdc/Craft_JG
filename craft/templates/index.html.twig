@@ -6,11 +6,11 @@
 {% block content %}
 	<div class="inset">
         <ul class="owl-carousel">
-        {% set params = { section: 'gallery, onTheRoad', type: 'project', order: 'uri' } %}
-
-        {% for entry in shuffle(craft.entries(params).limit(20)) %}
-        <li class="item">
-            <a href="{{ entry.url }}">
+        {% set params = { section: 'gallery, onTheRoad', type: 'project', order: 'postDate desc' } %}
+        {% paginate craft.entries(params).limit(3) as entries %}
+		{% for entry in entries %}
+        <li class="grid_item">
+            <a class="item" href="{{ entry.url }}">
 
             <div class="item-img-block">
                 {% set found = false %}
@@ -30,8 +30,9 @@
             </div>
 
             <div class="item-details">
-                <p class="item-title">{{ entry.title | capitalize }}</p>
-                <p class="item-description">{{ entry.materials }} {{ '— ' ~ entry.dimensions }}</p>
+                <p class="item-title">{{ entry.title | title }}</p>
+                <p class="item-description">{{ entry.materials | widont }}</p>
+				{{ entry.dimensions }}
             </div>
 
             </a>
@@ -40,52 +41,53 @@
         </ul>
 	</div>
 
-{% set params = { section: 'gallery', type: 'project' } %}
-{% set prevArt = entry.getPrev(params) %}
-{% set nextArt = entry.getNext(params) %}
 
 <div class="page_nav">
-    <span class="page_nav-item--left" href=""></span>
-
-    <span class="page_nav-item--right" href=""></span>
+	{% if paginate.prevUrl %}
+    <a class="page_nav-item--left" href="{{ paginate.prevUrl }}"></a>
+	{% endif %}
+	{% if paginate.nextUrl %}
+    <a class="page_nav-item--right" href="{{ paginate.nextUrl }}"></a>
+	{% endif %}
 </div>
+{% endpaginate %}
 {% endblock %}
 
 {% block js %}
 {{ parent() }}
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript" src="/_assets/js/owl.carousel.js"></script>
-        <script type="application/javascript">
-            $(document).ready(function(){
-                var owl = $('.owl-carousel');
-                owl.owlCarousel({
-                    loop:true,
-                    margin:10,
-                    responsive:{
-                        0:{
-                            items:1
-                        },
-                        600:{
-                            items:2
-                        },
-                        1000:{
-                            items:3
-                        }
-                    }
+{#<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>#}
+{#<script type="text/javascript" src="/_assets/js/owl.carousel.js"></script>#}
+        {#<script type="application/javascript">#}
+            {#$(document).ready(function(){#}
+                {#var owl = $('.owl-carousel');#}
+                {#owl.owlCarousel({#}
+                    {#loop:true,#}
+                    {#margin:10,#}
+                    {#responsive:{#}
+                        {#0:{#}
+                            {#items:1#}
+                        {#},#}
+                        {#600:{#}
+                            {#items:2#}
+                        {#},#}
+                        {#1000:{#}
+                            {#items:3#}
+                        {#}#}
+                    {#}#}
 
-                })
-                // Go to the next item
-                $('.page_nav-item--right').click(function() {
-                    owl.trigger('next.owl.carousel');
-                })
-                // Go to the previous item
-                $('.page_nav-item--left').click(function() {
-                    // With optional speed parameter
-                    // Parameters has to be in square bracket '[]'
-                    owl.trigger('prev.owl.carousel', [300]);
-                })
+                {#})#}
+                {#// Go to the next item#}
+                {#$('.page_nav-item--right').click(function() {#}
+                    {#owl.trigger('next.owl.carousel');#}
+                {#})#}
+                {#// Go to the previous item#}
+                {#$('.page_nav-item--left').click(function() {#}
+                    {#// With optional speed parameter#}
+                    {#// Parameters has to be in square bracket '[]'#}
+                    {#owl.trigger('prev.owl.carousel', [300]);#}
+                {#})#}
 
-                });
+                {#});#}
 
-        </script>
+        {#</script>#}
 {% endblock js %}
