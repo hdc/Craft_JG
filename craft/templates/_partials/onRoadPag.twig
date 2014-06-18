@@ -1,0 +1,13 @@
+{% set roadParams = { section: 'onTheRoad', type: ['project','writeUp'] } %}
+	{% set prevArtRoad = entry.getPrev(roadParams) %}
+	{% set nextArtRoad = entry.getNext(roadParams) %}
+
+<div class="page_nav">
+	{% if prevArtRoad  %}
+		<a class="page_nav-item--left" href="{{ prevArtRoad.url }}"></a>
+	{% endif %}
+
+	{% if nextArtRoad %}
+		<a class="page_nav-item--right" href="{{ nextArtRoad.url }}"></a>
+	{% endif %}
+</div>

@@ -1,0 +1,13 @@
+{% set params = { section: 'portfolio', type: ['project','writeUp'] } %}
+	{% set prevArt = entry.getPrev(params) %}
+	{% set nextArt = entry.getNext(params) %}
+
+<div class="page_nav">
+	{% if prevArt %}
+		<a class="page_nav-item--left" href="{{ prevArt.url }}"></a>
+	{% endif %}
+
+	{% if nextArt %}
+		<a class="page_nav-item--right" href="{{ nextArt.url }}"></a>
+	{% endif %}
+</div>

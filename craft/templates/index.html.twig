@@ -5,32 +5,19 @@
 {% extends "_layout" %}
 {% block content %}
 	<div class="inset">
-        <ul class="owl-carousel">
-        {% set params = { section: 'gallery, onTheRoad', type: 'project', order: 'postDate desc' } %}
+        <ul>
+        {% set params = { section: 'portfolio, onTheRoad', type: ['project','writeUp'], order: 'postDate desc' } %}
         {% paginate craft.entries(params).limit(3) as entries %}
 		{% for entry in entries %}
         <li class="grid_item">
             <a class="item" href="{{ entry.url }}">
 
             <div class="item-img-block">
-                {% set found = false %}
-                {% for block in entry.media %}
-
-                    {% set showFirst = block.type == "firstColumn" and block.showOnHomepage | length and found == false %}
-                    {% set showSecond = block.type == "secondColumn" and block.showOnHomepage | length and found == false %}
-                        {% if showFirst  %}
-                            {% set image = block.fcImage.first() %}
-                            <img src="{{ image.url }}" alt="{{ image.title }}">
-                        {% elseif showSecond %}
-                            {% set image = block.scImage.first() %}
-                            <img src="{{ image.url }}" alt="{{ image.title }}">
-                        {% endif %}
-                        {% set found = true %}
-                {% endfor %}
+                {% include 'home/' ~ entry.type %}
             </div>
 
             <div class="item-details">
-                <p class="item-title">{{ entry.title | title }}</p>
+                <p class="item-title">{{ entry.title }}</p>
                 <p class="item-description">{{ entry.materials | widont }}</p>
 				{{ entry.dimensions }}
             </div>
@@ -54,40 +41,5 @@
 {% endblock %}
 
 {% block js %}
-{{ parent() }}
-{#<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>#}
-{#<script type="text/javascript" src="/_assets/js/owl.carousel.js"></script>#}
-        {#<script type="application/javascript">#}
-            {#$(document).ready(function(){#}
-                {#var owl = $('.owl-carousel');#}
-                {#owl.owlCarousel({#}
-                    {#loop:true,#}
-                    {#margin:10,#}
-                    {#responsive:{#}
-                        {#0:{#}
-                            {#items:1#}
-                        {#},#}
-                        {#600:{#}
-                            {#items:2#}
-                        {#},#}
-                        {#1000:{#}
-                            {#items:3#}
-                        {#}#}
-                    {#}#}
 
-                {#})#}
-                {#// Go to the next item#}
-                {#$('.page_nav-item--right').click(function() {#}
-                    {#owl.trigger('next.owl.carousel');#}
-                {#})#}
-                {#// Go to the previous item#}
-                {#$('.page_nav-item--left').click(function() {#}
-                    {#// With optional speed parameter#}
-                    {#// Parameters has to be in square bracket '[]'#}
-                    {#owl.trigger('prev.owl.carousel', [300]);#}
-                {#})#}
-
-                {#});#}
-
-        {#</script>#}
 {% endblock js %}

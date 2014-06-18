@@ -1,0 +1,22 @@
+{# Controls the layout for WriteUp type entries on home page #}
+
+
+{% set found = false %}
+	{% for block in entry.assets %}
+
+		{% if block.type == 'image' and found == false %}
+			{% set image = block.image.first() %}
+			{% if image | length %}
+				<img src="{{ image.url }}" alt="{{ image.title }}">
+			{% endif %}
+
+		{% elseif block.type == 'video' and found == false %}
+			{% set video = block.video %}
+			{% if video | length %}
+				<div class="vid-block">
+					<iframe width="100%" height="315" src="//www.youtube.com/embed/{{ video }}" frameborder="0" allowfullscreen></iframe>
+				</div>
+			{% endif %}
+		{% endif %}
+		{% set found = true %}
+	{% endfor %}

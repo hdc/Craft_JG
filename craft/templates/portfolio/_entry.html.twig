@@ -1,0 +1,16 @@
+{% extends "_layout" %}
+{% set title =  entry.title ~ ' | ' ~ entry.parent('title') %}
+
+{% block content %}
+	<div class="inset">
+		<article class="section">
+			{% include "_partials/" ~ entry.type %}
+		</article>
+	</div>
+
+	{% include "_partials/portfolioPag" %}
+
+	{% include "_partials/onRoadPag" %}
+
+{% endblock %}
+

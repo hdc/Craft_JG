@@ -158,7 +158,7 @@ footer, .nav {
 }
 
 /* line 24, ../stylesheets/_general/_extends.sass */
-.project-slider, .item-img-block, .grid_item--media {
+.project-slider, .item-img-block, .grid_item--media, .grid_item--text, .grid_item--text_media {
   overflow: hidden;
 }
 
@@ -241,11 +241,6 @@ html {
 /* line 50, ../stylesheets/site.sass */
 .container {
   z-index: 99;
-}
-
-/* line 54, ../stylesheets/site.sass */
-.content {
-  min-height: 31.06667em;
 }
 
 /* line 58, ../stylesheets/site.sass */
@@ -347,7 +342,7 @@ footer:after {
   margin: 0;
 }
 
-/* line 147, ../stylesheets/site.sass */
+/* line 148, ../stylesheets/site.sass */
 .media_container {
   width: 66.31016%;
   float: right;
@@ -356,9 +351,8 @@ footer:after {
   display: inline;
 }
 
-/* line 150, ../stylesheets/site.sass */
+/* line 151, ../stylesheets/site.sass */
 .grid_item--media {
-  max-height: 28em;
   width: 49.19355%;
   float: left;
   margin-right: 1.6129%;
@@ -370,12 +364,29 @@ footer:after {
   margin-right: 0;
 }
 
-/* line 156, ../stylesheets/site.sass */
+/* line 157, ../stylesheets/site.sass */
+.grid_item--text {
+  width: 66.31016%;
+  float: left;
+  margin-right: 1.06952%;
+  display: inline;
+}
+
+/* line 161, ../stylesheets/site.sass */
+.grid_item--text_media {
+  width: 32.62032%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -0.66667em;
+  display: inline;
+}
+
+/* line 166, ../stylesheets/site.sass */
 .content_block {
   padding-right: 1.33333em;
 }
 
-/* line 159, ../stylesheets/site.sass */
+/* line 169, ../stylesheets/site.sass */
 .work_meta {
   margin-bottom: 10px;
   margin-bottom: 0.66667rem;
@@ -383,37 +394,65 @@ footer:after {
   margin-top: 0.33333rem;
 }
 
-/* line 163, ../stylesheets/site.sass */
+/* line 173, ../stylesheets/site.sass */
 .work_meta-item {
   border-top: 1px solid #949274;
   padding: 0.46667rem 0;
 }
 
-/* line 167, ../stylesheets/site.sass */
+/* line 177, ../stylesheets/site.sass */
 .img-block {
-  margin-bottom: 0.66667em;
+  margin-bottom: 10px;
 }
 
-/* line 175, ../stylesheets/site.sass */
+/* line 190, ../stylesheets/site.sass */
 .page_nav .page_nav-item--right, .page_nav .page_nav-item--left {
   background: transparent url(../img/page_arrows.png) no-repeat;
   width: 2.13333em;
   height: 2em;
-  top: 50%;
+  top: 7em;
+  margin-top: -1em;
   cursor: pointer;
 }
 
-/* line 184, ../stylesheets/site.sass */
+/* line 200, ../stylesheets/site.sass */
 .page_nav {
   width: 100%;
 }
-/* line 187, ../stylesheets/site.sass */
+/* line 203, ../stylesheets/site.sass */
 .page_nav .page_nav-item--right {
-  right: 0;
+  right: 2em;
   background-position: center -30px;
 }
-/* line 193, ../stylesheets/site.sass */
+/* line 209, ../stylesheets/site.sass */
 .page_nav .page_nav-item--left {
   background-position: center 0;
+  left: 2em;
+}
+
+/* Video - Mad props to http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/ ---------------------- */
+/* line 216, ../stylesheets/site.sass */
+.flex-video, .vid-block {
+  position: relative;
+  padding-top: 25px;
+  padding-bottom: 67.5%;
+  height: 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+/* line 224, ../stylesheets/site.sass */
+.flex-video.widescreen, .widescreen.vid-block {
+  padding-bottom: 57.25%;
+}
+/* line 227, ../stylesheets/site.sass */
+.flex-video.vimeo, .vimeo.vid-block {
+  padding-top: 0;
+}
+/* line 230, ../stylesheets/site.sass */
+.flex-video iframe, .vid-block iframe, .flex-video object, .vid-block object, .flex-video embed, .vid-block embed, .flex-video video, .vid-block video {
+  position: absolute;
+  top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
 }

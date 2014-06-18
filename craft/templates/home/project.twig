@@ -1,0 +1,29 @@
+{# Controls the layout for project entries on home page #}
+{% set found = false %}
+	{% for block in entry.media %}
+
+		{% set showFirst = block.type == "firstColumn" and found == false %}
+		{% set showSecond = block.type == "secondColumn" and found == false %}
+		{% if showFirst  %}
+			{% set image = block.fcImage.first() %}
+			{% set video = block.fcVideo %}
+			{% if image | length %}
+				<img src="{{ image.url }}" alt="{{ image.title }}">
+			{% elseif video | length %}
+				<div class="vid-block">
+					<iframe width="100%" height="315" src="//www.youtube.com/embed/{{ video }}" frameborder="0" allowfullscreen></iframe>
+				</div>
+			{% endif %}
+		{% elseif showSecond %}
+			{% set image = block.scImage.first() %}
+			{% set video = block.scVideo %}
+			{% if image | length %}
+				<img src="{{ image.url }}" alt="{{ image.title }}">
+			{% elseif video | length %}
+				<div class="vid-block">
+					<iframe width="100%" height="315" src="//www.youtube.com/embed/{{ video }}" frameborder="0" allowfullscreen></iframe>
+				</div>
+			{% endif %}
+		{% endif %}
+		{% set found = true %}
+	{% endfor %}
