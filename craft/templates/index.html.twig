@@ -28,18 +28,15 @@
         </ul>
 	</div>
 
-
-<div class="page_nav">
-	{% if paginate.prevUrl %}
-    <a class="page_nav-item--left" href="{{ paginate.prevUrl }}"></a>
-	{% endif %}
-	{% if paginate.nextUrl %}
-    <a class="page_nav-item--right" href="{{ paginate.nextUrl }}"></a>
-	{% endif %}
-</div>
-{% endpaginate %}
+	<div class="page_nav">
+		{% if paginate.prevUrl %}
+		<a class="page_nav-item--left" href="{{ paginate.prevUrl }}"></a>
+		{% endif %}
+		{% if paginate.nextUrl %}
+		<a class="page_nav-item--right" href="{{ paginate.nextUrl }}"></a>
+		{% endif %}
+	</div>
+	{% endpaginate %}
 {% endblock %}
 
-{% block js %}
-
-{% endblock js %}
+{% block js %}{% endblock js %}
