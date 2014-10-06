@@ -1,0 +1,30 @@
+<div class="grid_item--full">
+	<div class="content_block">
+		<h1 class="hdr2">{{ entry.title }}</h1>
+
+		<ul class="work_meta">
+			{% set seriesName = entry.parent('title') %}
+			{% if seriesName is not null %}<li class="work_meta-item">{{ seriesName | widont }}</li>{% endif %}
+			{% if entry.materials | length %} <li class="work_meta-item">{{ entry.materials | widont }}</li>{% endif %}
+			{% if entry.dimensions | length %}<li class="work_meta-item">{{ entry.dimensions | widont }}</li>{% endif %}
+		</ul>
+		<div class="work_description">
+			{{ entry.description | widont }}
+		</div>
+	</div>
+</div>
+
+{% if entry.assets | length %}
+	<ul class="gallery-list">
+	{% for block in entry.assets %}
+	<li class="grid_item--alt">
+		<div class="media-block">
+			{% include '_partials/_asset-block' %}
+		</div>
+	</li>
+
+	{% endfor %}
+	</ul>
+{% endif %}
+
+

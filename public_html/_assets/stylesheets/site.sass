@@ -12,8 +12,9 @@
 
 @import _general/extends
 @import _general/functions
+@import _general/breakpoints
 
-//@import _modules/owl
+@import _modules/_fluidbox
 
 
 // Root styles
@@ -24,6 +25,10 @@ html
 	background: $body-background
 	color: $primary-text
 	font-family: $base-font-family
+
+body
+	@extend %position-relative
+	width: 100%
 
 // Layout
 // Setting up the Magic Grid
@@ -37,15 +42,16 @@ $grid-padding: em(20px)
 	@extend %position-relative
 	background: $primary-text url(../img/art_bgd.jpg) repeat-x 0 50%
 	height: em(31px)
+	width: 100%
 
 	.art
 		@extend %position-absolute
-		background: transparent url(../img/art_bubble.jpg) no-repeat left 0
+		background: transparent url(../img/art-bub.jpg) no-repeat left 0
 		top: 0
 		left: 50%
-		margin-left: em(-512px)
-		width: em(1024px)
-		height: em(78px)
+		margin-left: em(-45px)
+		width: em(90px)
+		height: em(80px)
 
 .container
 	@extend %position-relative
@@ -70,6 +76,11 @@ $grid-padding: em(20px)
 	&.home
 		width: em(473px)
 		height: em(54px)
+		+respond-to(tablet)
+			width: 75%
+			height: auto
+		+respond-to(handheld-landscape)
+			width: 95%
 
 header,
 .content,
@@ -77,40 +88,121 @@ footer
 	@extend %position-relative
 	@extend %site-width
 
+.content
+	padding-bottom: rhythm(3)
 
 .inset
 	+pad(1,1)
 
 .grid_item
 	+span-columns(3,9)
-	+nth-omega(3)
+	+nth-omega(3n)
+	+respond-to(tablet)
+		+reset-columns
+		+remove-nth-omega(3n)
+		margin-bottom: rhythm(1)
+		+respond-to(tablet-small)
+			width: 100%
+			text-align: left
+
+.grid_item--alt
+	+span-columns(3,9)
+	&:nth-child(3n+1)
+		clear: both
+	+nth-omega(3n)
+
+	+respond-to(tablet)
+		+span-columns(4.4,9)
+		+remove-nth-omega(3n)
+		&:nth-child(3n+1)
+			clear: none
+		&:nth-child(2n+1)
+			clear: both
+		+nth-omega(2n)
+
+	+respond-to(tablet-small)
+		+span-columns(9,9)
+		+remove-nth-omega(2n)
+		&:nth-child(2n+1)
+			clear: none
+
+
+.grid_item--full
+	@extend %text-center
+	+reset-columns
+	width: 85%
+	margin: 0 auto rhythm(2) auto
+	+respond-to(tablet-small)
+		width: 100%
+		text-align: left
+
+	.content_block
+		padding-right: 0
+
 
 .img-block
 	@extend %img-full
+
+.artistCol
+	+span-columns(4,11)
+	+respond-to(tablet)
+		+trailer(1.5)
+		+reset-columns
+
+.resume
+	+span-columns(6 omega,11)
+	+respond-to(tablet)
+		+reset-columns
+
+	.group
+		margin-bottom: rhythm(1)
+
+	.group-title
+		@extend %text-caps
+		color: $primary-text
+		margin: 0 0 rhythm(.5) 0
+		font-weight: bold
+		border-color: $primary-text
+		+trailing-border(1px,.25)
+
 
 // Main Navigation
 .nav
 	@extend %position-relative
 	margin-top: em(30px)
+	+respond-to(desktop-large)
+		margin-top: em(60px)
+
+	+respond-to(tablet)
+		text-align: center
 
 	.nav_container
 		@extend %clearfix
 
 		.nav_item
-			@extend %float-left
+			@extend %display-inline-block
 			border-left: 2px solid $primary-text
-			line-height: 1
+			line-height: 1.25
 			padding: 0 rhythm(.5)
+			vertical-align: top
 			&:first-child
 				border: none
 				padding-left: 0
-			&.last
-				@extend %float-right
-				border: none
-				padding: 0
 
 			.nav_item-block
 				@extend %display-block
+
+			&:last-child
+				float: right
+				border: none
+				padding: 0
+
+				+respond-to(tablet)
+					float: none
+					border-left: 2px solid $primary-text
+					padding: 0 rhythm(.5)
+
+
 
 
 // HomePage
@@ -125,7 +217,6 @@ footer
 .item-img-block
 	@extend %img-full
 	@extend %overflow-hidden
-	max-height: em(452px)
 
 .item-details
 	@extend %text-small
@@ -133,8 +224,6 @@ footer
 	+leader(.25)
 
 	.item-title
-		@extend %text-strong
-		color: #000
 		margin: 0
 
 	.item-description
@@ -147,24 +236,46 @@ footer
 // Standard project Layout
 .media_container
 	+span-columns(6 omega,9)
+	+respond-to(tablet)
+		+reset-columns
 
 .grid_item--media
-	@extend %overflow-hidden
 	+span-columns(3,6)
 	+nth-omega(2)
+
+	+respond-to(tablet)
+		+span-columns(4.4,9)
+		&:nth-child(2n+1)
+			clear: both
+		+nth-omega(2n)
+
+	+respond-to(tablet-small)
+		+span-columns(9,9)
+		+remove-nth-omega(2n)
+		&:nth-child(2n+1)
+			clear: none
+
 
 // Write Up layout
 .grid_item--text
 	@extend %overflow-hidden
 	+span-columns(6,9)
 
+	+respond-to(tablet)
+		+trailer(1.5)
+		+reset-columns
+
 .grid_item--text_media
-	@extend %overflow-hidden
 	+span-columns(3 omega,9)
+
+	+respond-to(tablet)
+		+reset-columns
 
 // Give text some room to the right
 .content_block
 	padding-right: em(20px)
+	+respond-to(tablet)
+		padding: 0
 
 .work_meta
 	+trailer(.5)

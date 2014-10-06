@@ -235,10 +235,10 @@
 # http://stackoverflow.com/questions/234723/generic-htaccess-redirect-www-to-non-www
 # ----------------------------------------------------------------------
 
-# <IfModule mod_rewrite.c>
-# 	RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-# 	RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
-# </IfModule>
+<IfModule mod_rewrite.c>
+	RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+	RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+</IfModule>
 
 
 # ----------------------------------------------------------------------
@@ -317,20 +317,20 @@
 
 # Block access to "hidden" directories or files whose names begin with a period. This
 # includes directories used by version control systems such as Subversion or Git.
-# <IfModule mod_rewrite.c>
-#   RewriteCond %{SCRIPT_FILENAME} -d [OR]
-#   RewriteCond %{SCRIPT_FILENAME} -f
-#   RewriteRule "(^|/)\." - [F]
-# </IfModule>
+<IfModule mod_rewrite.c>
+   RewriteCond %{SCRIPT_FILENAME} -d [OR]
+   RewriteCond %{SCRIPT_FILENAME} -f
+   RewriteRule "(^|/)\." - [F]
+</IfModule>
 
 # Block access to backup and source files
 # These files may be left by some text/html editors and
 # pose a great security danger, when anyone can access them
-# <FilesMatch "(\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
-#   Order allow,deny
-#   Deny from all
-#   Satisfy All
-# </FilesMatch>
+<FilesMatch "(\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
+   Order allow,deny
+   Deny from all
+   Satisfy All
+</FilesMatch>
 
 # Increase cookie security
 # <IfModule php5_module>
@@ -339,10 +339,10 @@
 
 # Hide .git and _svn folders so they cannot be accessed
 # But you shouldn't upload them in the first place
-# <IfModule mod_rewrite.c>
-# 	RewriteRule ^(.*/)*_svn/ / [F,L]
-# 	RewriteRule ^(.*/)*\.git/ / [F,L]
-# </IfModule>
+<IfModule mod_rewrite.c>
+	RewriteRule ^(.*/)*_svn/ / [F,L]
+	RewriteRule ^(.*/)*\.git/ / [F,L]
+</IfModule>
 
 
 # ------------------------------------------------------------
@@ -357,7 +357,9 @@
 # Test new rules as 302 redirects
 # ------------------------------------------------------------
 
-# RewriteRule ^old-url/?$ /new-url [R=301,L]
+RewriteRule ^statement.htm?$ http://judygregory.com/the-artist [R=301,L]
+RewriteRule ^home.htm?$ http://judygregory.com [R=301,L]
+RewriteRule ^networks.htm?$ http://judygregory.com/portfolio/commissioned/networks-1-and-2 [R=301,L]
 
 
 # ----------------------------------------------------------------------

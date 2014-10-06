@@ -1,0 +1,25 @@
+{% extends "_layout" %}
+{% set title =  entry.title ~ ' | ' ~ entry.section  %}
+
+{% block content %}
+	<div class="inset">
+		<article class="section">
+			{% include "landmarks/project" %}
+		</article>
+	</div>
+
+	{% set params = { section: 'landmarks', order: 'postDate desc' } %}
+	{% set prevArt = entry.getPrev(params) %}
+	{% set nextArt = entry.getNext(params) %}
+
+	<div class="page_nav">
+		{% if prevArt  %}
+			<a class="page_nav-item--left" href="{{ prevArt.url }}"></a>
+		{% endif %}
+
+		{% if nextArt %}
+			<a class="page_nav-item--right" href="{{ nextArt.url }}"></a>
+		{% endif %}
+	</div>
+
+{% endblock %}

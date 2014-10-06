@@ -1,0 +1,37 @@
+// A basic media query mixin that makes responsive work simple.
+
+=respond-to($device)
+
+	@if $device == handheld-landscape
+		@media only screen and (max-width : 420px)
+			@content
+
+	@if $device == desktop-large
+		@media only screen and (max-width : 1045px)
+			@content
+
+	@if $device == tablet
+		@media only screen and (max-width : 768px)
+			@content
+
+	@if $device == tablet-small
+		@media only screen and (max-width : 600px)
+			@content
+
+	@if $device == retina-display
+		@media only screen and (-webkit-min-device-pixel-ratio: 2)
+			@content
+
+body
+	&:after
+		display: none
+		+respond-to(handheld)
+			content: 'handheld'
+		+respond-to(tablet)
+			content: 'tablet'
+		+respond-to(tablet-large)
+			content: 'tablet-large'
+		+respond-to(desktop-small)
+			content: 'desktop'
+		+respond-to(desktop-large)
+			content: 'desktop-large'

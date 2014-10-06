@@ -18,24 +18,7 @@
 		{% if entry.assets | length %}
 			<div class="media-block">
 				{% for block in entry.assets %}
-					{% if block.type == 'image' %}
-						{% set image = block.image.first() %}
-						{% if image | length %}
-							<div class="img-block">
-								<img src="{{ image.url }}" alt="{{ image.title }}">
-								<div class="item-details">
-									<p class="item-description">{{ image.caption | widont }}</p>
-								</div>
-							</div>
-						{% endif %}
-					{% elseif block.type == 'video' %}
-						{% set video = block.video %}
-						{% if video | length %}
-							<div class="vid-block">
-								<iframe width="100%" height="315" src="//www.youtube.com/embed/{{ video }}" frameborder="0" allowfullscreen></iframe>
-							</div>
-						{% endif %}
-				{% endif %}
+				{% include '_partials/_asset-block' %}
 				{% endfor %}
 			</div>
 

@@ -1,0 +1,28 @@
+{% if block.type == 'image' %}
+{% set image = block.image.first() %}
+	{% if image | length and block.column == column %}
+		<div class="img-block">
+			{% if block.orientation == 'Vertical' %}
+			<a href="{{ image.url }}" class="expand fluidbox">
+				<img src="{{ image.url(vertical) }}" alt="{{ image.title }}">
+			</a>
+			{% else %}
+			<a href="{{ image.url }}" class="expand fluidbox">
+				<img src="{{ image.url(horizontal) }}" alt="{{ image.title }}">
+			</a>
+			{% endif %}
+			{% if image.caption %}
+			<div class="item-details">
+				<p class="item-description">{{ image.caption | widont }}</p>
+			</div>
+			{% endif %}
+		</div>
+	{% endif %}
+{% elseif block.type == 'video' %}
+	{% set video = block.video %}
+	{% if video | length and block.column == column  %}
+		<div class="vid-block">
+			<iframe width="100%" height="315" src="//www.youtube.com/embed/{{ video }}" frameborder="0" allowfullscreen></iframe>
+		</div>
+	{% endif %}
+{% endif %}

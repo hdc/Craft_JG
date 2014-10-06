@@ -15,28 +15,11 @@
 </div>
 
 <div class="media_container">
-
 	<div class="grid_item--media">
 		{% if entry.media | length %}
 			<div class="media-block">
 				{% for block in entry.media %}
-					{% if block.type == 'firstColumn' %}
-						{% set image = block.fcImage.first() %}
-						{% if image | length %}
-							<div class="img-block">
-								<img src="{{ image.url }}" alt="{{ image.title }}">
-								<div class="item-details">
-									<p class="item-description">{{ image.caption | widont }}</p>
-								</div>
-							</div>
-						{% endif %}
-						{% set video = block.fcVideo %}
-						{% if video | length %}
-							<div class="vid-block">
-								<iframe width="100%" height="315" src="//www.youtube.com/embed/{{ video }}" frameborder="0" allowfullscreen></iframe>
-							</div>
-						{% endif %}
-					{% endif %}
+					{{ include ('_partials/_media-block', {column: 'First'})  }}
 				{% endfor %}
 			</div>
 
@@ -47,24 +30,7 @@
 		{% if entry.media | length %}
 			<div class="media-block">
 				{% for block in entry.media %}
-					{% if block.type == 'secondColumn' %}
-						{% set image = block.scImage.first() %}
-						{% set video = block.scVideo %}
-						{% if image | length %}
-							<div class="img-block">
-								<img src="{{ image.url }}" alt="{{ image.title }}">
-								<div class="item-details">
-									<p class="item-description">{{ image.caption | widont }}</p>
-								</div>
-							</div>
-						{% endif %}
-
-						{% if video | length %}
-							<div class="vid-block">
-								<iframe width="100%" height="315" src="//www.youtube.com/embed/{{ video }}" frameborder="0" allowfullscreen></iframe>
-							</div>
-						{% endif %}
-					{% endif %}
+					{{ include ('_partials/_media-block', {column: 'Second'})  }}
 				{% endfor %}
 			</div>
 		{% endif %}

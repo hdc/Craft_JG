@@ -1,0 +1,31 @@
+{#
+ # Homepage template
+ # ---------------#}
+
+{% extends "_layout" %}
+{% block content %}
+	<div class="artistCol">
+			{% set image =  entry.image.first() %}
+			{% if image %}
+				<div class="img-block">
+					<img src="{{ image.url }}" alt="{{ image.title }}">
+				</div>
+			{% endif %}
+
+			<div class="artist-statment wys-text">
+				{{ entry.artistStatement }}
+			</div>
+	</div>
+	<div class="resume">
+		{% if entry.resume | length %}
+			{% for group in entry.resume  %}
+				<div class="group">
+					<h3 class="group-title">{{ group.groupTitle }}</h3>
+					<div class="wys-text">
+						{{ group.info }}
+					</div>
+				</div>
+			{% endfor %}
+		{% endif %}
+	</div>
+{% endblock %}

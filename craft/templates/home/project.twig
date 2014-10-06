@@ -1,29 +1,26 @@
 {# Controls the layout for project entries on home page #}
-{% set found = false %}
 	{% for block in entry.media %}
 
-		{% set showFirst = block.type == "firstColumn" and found == false %}
-		{% set showSecond = block.type == "secondColumn" and found == false %}
-		{% if showFirst  %}
-			{% set image = block.fcImage.first() %}
-			{% set video = block.fcVideo %}
-			{% if image | length %}
-				<img src="{{ image.url }}" alt="{{ image.title }}">
-			{% elseif video | length %}
-				<div class="vid-block">
-					<iframe width="100%" height="315" src="//www.youtube.com/embed/{{ video }}" frameborder="0" allowfullscreen></iframe>
-				</div>
+
+		{% if block.type == 'image' %}
+			{% set show = block.showOnHomePage | length %}
+			{% set image = block.image.first() %}
+			{% set verticalImg = block.orientation == 'Vertical' %}
+
+			{% if image | length and block.column == 'First' and show %}
+				<img src="{% if verticalImg %}{{ image.url(vertical) }}{% else %}{{ image.url(horizontal) }}{% endif %}" alt="{{ image.title }}">
+			{% elseif image | length and block.column == 'Second' and show %}
+				<img src="{% if verticalImg %}{{ image.url(vertical) }}{% else %}{{ image.url(horizontal) }}{% endif %}" alt="{{ image.title }}">
 			{% endif %}
-		{% elseif showSecond %}
-			{% set image = block.scImage.first() %}
-			{% set video = block.scVideo %}
-			{% if image | length %}
-				<img src="{{ image.url }}" alt="{{ image.title }}">
-			{% elseif video | length %}
+		{% elseif block.type == 'video' %}
+			{% set showVid = block.showOnHomePage | length %}
+			{% set video = block.video %}
+			{% set first = video | length and block.column == 'First' %}
+			{% set second = video | length and block.column == 'Second' %}
+			{% if first or second and showVid  %}
 				<div class="vid-block">
 					<iframe width="100%" height="315" src="//www.youtube.com/embed/{{ video }}" frameborder="0" allowfullscreen></iframe>
 				</div>
 			{% endif %}
 		{% endif %}
-		{% set found = true %}
 	{% endfor %}

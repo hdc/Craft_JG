@@ -1,0 +1,10 @@
+<div class="img-block">
+	<a href="{{ image.url }}" class="expand">
+		<img src="{{ image.url(orientation) }}" alt="{{ image.title }}">
+	</a>
+	{% if image.caption %}
+		<div class="item-details">
+			<p class="item-description">{{ image.caption | widont }}</p>
+		</div>
+	{% endif %}
+</div>

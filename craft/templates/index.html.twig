@@ -6,7 +6,7 @@
 {% block content %}
 	<div class="inset">
         <ul>
-        {% set params = { section: 'portfolio, onTheRoad', type: ['project','writeUp'], order: 'postDate desc' } %}
+        {% set params = { section: 'portfolio, onTheRoad,landmarks', type: ['project','writeUp'], order: 'postDate desc' } %}
         {% paginate craft.entries(params).limit(3) as entries %}
 		{% for entry in entries %}
         <li class="grid_item">
@@ -18,8 +18,6 @@
 
             <div class="item-details">
                 <p class="item-title">{{ entry.title }}</p>
-                <p class="item-description">{{ entry.materials | widont }}</p>
-				{{ entry.dimensions }}
             </div>
 
             </a>
